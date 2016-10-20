@@ -5,5 +5,9 @@ page = urlopen('http://www.foodnetwork.com/recipes/emeril-lagasse/vegetarian-chi
 
 soup = BeautifulSoup(page)
 
-print(soup.prettify())
+html_list_items = soup.find_all("li")
 
+ingredient_items = soup.find_all(itemprop='ingredients') 
+
+for item in ingredient_items:
+    print(item.text)
