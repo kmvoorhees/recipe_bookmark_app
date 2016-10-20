@@ -7,7 +7,14 @@ soup = BeautifulSoup(page)
 
 html_list_items = soup.find_all("li")
 
-ingredient_items = soup.find_all(itemprop='ingredients') 
+ingredient_items = soup.find_all(itemprop='ingredients')
 
-for item in ingredient_items:
-    print(item.text)
+sibling_list = []
+for sibling in ingredient_items[0].parent.previous_siblings:
+    if sibling:
+        sibling_list.append(sibling)
+
+print(sibling_list)
+
+#for item in ingredient_items:
+#    print(item.text)
